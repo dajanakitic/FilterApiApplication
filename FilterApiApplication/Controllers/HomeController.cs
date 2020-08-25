@@ -44,14 +44,14 @@ namespace FilterApiApplication.Controllers
                 //filter list by size
                 if (!string.IsNullOrEmpty(size)) filterProducts = FilterLogic.FilterProductsBySize(filterProducts, size);
 
-                //highlight words in description
-                if (!string.IsNullOrEmpty(highlight)) filterProducts = FilterLogic.HighlightWordsInDescription(filterProducts, highlight);
-
                 //find all sizes 
                 var allSIzes = FilterLogic.FindAllSizesFromProductList(filterProducts);
 
                 //find common words
                 var commonWords = FilterLogic.FindCommonWordsFromProductList(filterProducts);
+
+                //highlight words in description
+                if (!string.IsNullOrEmpty(highlight)) filterProducts = FilterLogic.HighlightWordsInDescription(filterProducts, highlight);
 
                 viewModel = new FilterObjectModel
                 {
